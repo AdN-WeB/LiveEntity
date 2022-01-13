@@ -13,6 +13,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Category {
 
@@ -29,6 +31,7 @@ public class Category {
 	@Column(name= "display_order")
 	private Integer displayOrder;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "categories")
 	private List<Product> products;
 
