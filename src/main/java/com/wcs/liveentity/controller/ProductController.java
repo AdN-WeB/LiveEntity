@@ -38,13 +38,9 @@ public class ProductController {
 		for (Long idCategory : productDto.getIdsCategory()) {
 			// on recup la catégorie, si elle existe, on la met dans la liste des cat
 			// associée au product nouvellement créé.
-			Optional<Category> optCategory = categoryRepository.findById(idCategory);
-			if(optCategory.isPresent()) {
-				categories.add(optCategory.get());
-			}
-			else {
-				throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-			}
+			Category category = categoryRepository.findById(idCategory)
+					.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+			categories.add(category);
 		}
 		
 		Product product = new Product();
