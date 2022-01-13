@@ -20,7 +20,6 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
 	@NotBlank
 	@Size(min=3, max = 100)
 	private String name;
